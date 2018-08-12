@@ -15,10 +15,26 @@ namespace Test
     {
         static void Main(string[] args)
         {
-            AsynchronousWebRequest(args);
+            HttpRedirect();
 
             Console.ReadLine();
         }
+
+        #region HttpRedirect
+        private static void HttpRedirect()
+        {
+            try
+            {
+                var url = "https://localhost:44338/Home/RedirectTo";
+                HttpReq.HttpRedirect(url, true);
+                HttpReq.HttpRedirect(url, false);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+        }
+        #endregion
 
         #region AsynchronousWebRequest
         private static void AsynchronousWebRequest(string[] args)

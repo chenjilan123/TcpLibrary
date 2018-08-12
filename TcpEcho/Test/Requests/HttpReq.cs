@@ -45,13 +45,24 @@ namespace Test.Requests
 
         public static async void HttpRedirect(string url, bool allowRedirect)
         {
-            var request = WebRequest.Create(url) as HttpWebRequest;
-            request.AllowAutoRedirect = allowRedirect;
-            using (var response = await request.GetResponseAsync())
-            using (var stream = response.GetResponseStream())
-            using (var sr = new StreamReader(stream)) 
+            try
             {
-                Console.WriteLine(await sr.ReadToEndAsync());
+                //设置为true也无法进行重定向？
+                var request = WebRequest.Create(url) as HttpWebRequest;
+                request.AllowAutoRedirect = allowRedirect;
+                using (var response = await request.GetResponseAsync())
+                using (var stream = response.GetResponseStream())
+                using (var sr = new StreamReader(stream))
+                {
+                    var s = await sr.ReadToEndAsync();
+                    Console.WriteLine(s);
+                }
+
+            }
+            catch (WebException ex)
+            {
+                Console.WriteLine($"Error, Status: {ex.Status}");
+                Console.WriteLine($"Response Uri: {ex.Response.ResponseUri}");
             }
         }
     }
