@@ -9,11 +9,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="System.IO.Pipelines" Version="4.5.0" />
+    <Compile Remove="Requests\**" />
+    <EmbeddedResource Remove="Requests\**" />
+    <None Remove="Requests\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Requests\" />
+    <PackageReference Include="System.IO.Pipelines" Version="4.5.0" />
   </ItemGroup>
 
 </Project>

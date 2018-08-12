@@ -16,5 +16,12 @@ namespace XTest.WebRequest
 
 
         }
+
+        [Fact]
+        public void HttpWebRequestRedirect()
+        {
+            var url = "http://localhost:";
+            HttpReq.HttpRedirect(url);
+        }
     }
 }

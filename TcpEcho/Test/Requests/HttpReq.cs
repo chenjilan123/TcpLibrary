@@ -42,5 +42,16 @@ namespace Test.Requests
                 Console.WriteLine(s);
             }
         }
+
+        public static async void HttpRedirect(string url)
+        {
+            var request = WebRequest.Create(url) as HttpWebRequest;
+            using (var response = await request.GetResponseAsync())
+            using (var stream = response.GetResponseStream())
+            using (var sr = new StreamReader(stream)) 
+            {
+                Console.WriteLine(await sr.ReadToEndAsync());
+            }
+        }
     }
 }
