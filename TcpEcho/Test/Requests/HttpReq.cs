@@ -43,9 +43,10 @@ namespace Test.Requests
             }
         }
 
-        public static async void HttpRedirect(string url)
+        public static async void HttpRedirect(string url, bool allowRedirect)
         {
             var request = WebRequest.Create(url) as HttpWebRequest;
+            request.AllowAutoRedirect = allowRedirect;
             using (var response = await request.GetResponseAsync())
             using (var stream = response.GetResponseStream())
             using (var sr = new StreamReader(stream)) 

@@ -17,11 +17,12 @@ namespace XTest.WebRequest
 
         }
 
-        [Fact]
-        public void HttpWebRequestRedirect()
+        [Theory]
+        [InlineData("https://localhost:44338/Home/RedirectTo", true)]
+        [InlineData("https://localhost:44338/Home/RedirectTo", false)]
+        public void HttpWebRequestRedirect(string url, bool allowAutoRedirect)
         {
-            var url = "http://localhost:";
-            HttpReq.HttpRedirect(url);
+            HttpReq.HttpRedirect(url, allowAutoRedirect);
         }
     }
 }

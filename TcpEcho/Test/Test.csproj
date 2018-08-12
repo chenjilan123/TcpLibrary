@@ -6,6 +6,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Requests\HttpReq.cs~RF54f630d.TMP" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\OrangeSocket\OrangeSocket.csproj" />
   </ItemGroup>
 
